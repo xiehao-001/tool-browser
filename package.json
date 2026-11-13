@@ -1,0 +1,52 @@
+{
+  "name": "@chatecnu-work/dsh-tool-browser",
+  "version": "0.1.0-dev",
+  "description": "Key-less browser search that falls back to the official DeepSeek search provider when credentials exist.",
+  "type": "module",
+  "main": "lib/index.js",
+  "license": "MulanPSL-2.0 AND MIT",
+  "exports": {
+    ".": "./lib/index.js",
+    "./core": "./lib/core.js",
+    "./search-provider": "./lib/search-provider.js",
+    "./search-auto": "./lib/search-auto.js",
+    "./locale/en.json": "./locale/en.json",
+    "./locale/zh.json": "./locale/zh.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/**/*",
+    "locale/*.json",
+    "icon.svg",
+    "cordis.patch.yml",
+    "README.md",
+    "MARKET.md",
+    "docs/**/*"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.1 <0.3.0"
+  },
+  "keywords": [
+    "search",
+    "browser",
+    "playwright",
+    "web"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "4.0.2",
+    "@deepseek-ai/dsh-fs": "0.1.2-rc.1",
+    "@deepseek-ai/dsh-permission-presets": "0.1.2-rc.1",
+    "@deepseek-ai/dsh-tools": "0.1.2-rc.1",
+    "@deepseek-ai/dsh-web": "0.1.2-rc.1",
+    "@deepseek-ai/dsh-credentials": "0.1.5-rc.1",
+    "@deepseek-ai/dsh-launch-environment": "0.1.5-rc.1",
+    "@deepseek-ai/dsh-web-search-deepseek": "0.1.5-rc.1",
+    "playwright-core": "1.61.1"
+  }
+}

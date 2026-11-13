@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "浏览器搜索工具",
+    "description": "免 API Key 的浏览器搜索，并在已配置 DeepSeek 凭据时复用官方搜索 Provider。",
+    "detail": "提供 web 搜索工具族与托管浏览器（Playwright）页面操作；/search-auto 把 web.searchProvider 指向本插件，凭据存在时自动切换到官方 DeepSeek 搜索。随包不附带 Chromium，需另行安装浏览器运行时。"
+  }
+}

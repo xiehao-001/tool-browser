@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Browser Tool",
+    "description": "Key-less browser search that falls back to the official DeepSeek search provider when credentials exist."
+  }
+}

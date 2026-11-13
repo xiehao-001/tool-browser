@@ -1,0 +1,40 @@
+# EduWork managed browser and search provider
+
+[简体中文](README.md)
+
+The `/search-auto` entry is selected as `web.searchProvider: eduwork-search`
+in both distributions. Each request resolves the official
+`web-search-deepseek` settings and credential reference (default
+`DEEPSEEK_API_KEY`). A configured key uses DSH's original
+`DeepSeekSearchProvider`; an absent key goes straight to browser search.
+Adding or removing a key affects the next request. Institution login does not
+implicitly send `EDUWORK_API_KEY` to DeepSeek. A user may explicitly select a
+different search credential reference in the official plugin settings.
+
+The official provider's endpoint, model and limits remain configurable in
+that same settings section. A configured provider's authentication or network
+failure stays visible; it is not mistaken for an absent key.
+
+The package's `/search-provider` entry publishes ChatECNU Work's credential-free
+Bing/Baidu search route as a profile-scoped provider on DSH's official `ctx.web`
+seam. DSH's official `web_search` Tool, prompt guidance and result card remain
+the model and UI owners.
+
+The desktop uses the EduWork executable itself as Chromium for search, interactive browsing and media rendering; no separate Edge/Chrome installation is required. The desktop shell provides its path as `DSH_MEDIA_BROWSER`. In visible mode, window titles include the current site's host.
+
+Set `EDUWORK_BROWSER_EXECUTABLE` to override the browser; the legacy `CHATECNU_WORK_BROWSER_EXECUTABLE` remains supported. Source deployments can use locally installed Edge/Chrome.
+
+The main entry retains the DSH-native interactive browser execution surface. It uses a
+separate Playwright profile.
+Interaction, visible mode and private-network targets pass through DSH
+permission presets. Ordinary search belongs to `web_search`, not this browser
+Tool.
+
+The Tool intentionally exposes no arbitrary JavaScript execution. Returned page
+content is labelled as untrusted data before it is rendered into the Agent turn.
+
+The model uses one `browser` tool. Each session owns its pages and persistent login profile, with calls serialized per owner. Use `tabs`, `select_tab`, `new_tab`, and `close_tab` for tab management. Snapshots include the URL, tab ID, and accessibility structure.
+
+After a page or process closes, snapshot recovery explicitly reports the changed target. Click, type, back, and screenshot operations never silently retry on an unknown page. Visible mode requires permission. The sidebar browser is separate: its content and login state are not available through this tool.
+
+DSH rc.2's experimental Playwright MCP provider has richer operations, but its default isolated profile, fixed launch mode, and connection lifecycle do not directly preserve this product's persistent login and on-demand visible window behavior. This distribution keeps one browser tool; ordinary `web_search` routing is unchanged.
